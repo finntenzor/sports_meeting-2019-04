@@ -2,8 +2,8 @@
   <div class="gold-tops">
     <div class="gold-tops-header">金牌排名</div>
     <ul class="gold-tops-list">
-      <li v-for="(item, i) in teamsRankedGolden" :key="i" class="gold-tops-item">
-        <p class="gold-tops-item-line1">No.{{ i + 1 }}：{{ item.golden_count + item.golden_s_count }}枚</p>
+      <li v-for="(item, i) in rankedTeamsRankedGolden" :key="i" class="gold-tops-item">
+        <p class="gold-tops-item-line1">No.{{ item.rank }}：{{ item.total_count }}枚</p>
         <p class="gold-tops-item-line2">{{ item.name }}</p>
       </li>
     </ul>
@@ -17,7 +17,7 @@ export default {
   name: 'GoldTops',
   computed: {
     ...mapGetters({
-      teamsRankedGolden: 'teamsRankedGolden'
+      rankedTeamsRankedGolden: 'rankedTeamsRankedGolden'
     })
   }
 }

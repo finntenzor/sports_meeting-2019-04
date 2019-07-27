@@ -10,7 +10,7 @@
           <th>队伍名称</th>
           <th>奖牌数</th>
         </tr>
-        <tr v-for="(item, i) in computedTeamsRankedMedal" :key="i">
+        <tr v-for="(item, i) in rankedTeamsRankedMedal" :key="i">
           <td>{{ item.rank }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.total_count }}</td>
@@ -23,47 +23,12 @@
 <script>
 import { mapGetters } from 'vuex'
 
-function sumProperties(object, keys) {
-  return keys.map(k => object[k]).reduce((a, b) => a + b)
-}
-
 export default {
   name: 'GameRanking',
   computed: {
     ...mapGetters({
-      teamsRankedMedal: 'teamsRankedMedal'
-    }),
-    computedTeamsRankedMedal() {
-      const keys = [
-        'golden_count',
-        'golden_s_count',
-        'silver_count',
-        'silver_s_count',
-        'bronze_count',
-        'bronze_s_count'
-      ]
-      const result = []
-      for (let i = 0; i < this.teamsRankedMedal.length; i++) {
-        const item = this.teamsRankedMedal[i]
-        const total_count = sumProperties(item, keys)
-        if (i === 0) {
-          result.push({
-            ...item,
-            total_count,
-            rank: i + 1
-          })
-        } else {
-          const last = result[i - 1]
-          const rank = total_count === last.total_count ? last.rank : i + 1
-          result.push({
-            ...item,
-            total_count,
-            rank
-          })
-        }
-      }
-      return result
-    }
+      rankedTeamsRankedMedal: 'rankedTeamsRankedMedal'
+    })
   }
 }
 </script>
