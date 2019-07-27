@@ -6,7 +6,6 @@ use App\Models\Game;
 use App\Models\News;
 use App\Models\Team;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\NewsResource;
 
 class DataController extends Controller
 {
